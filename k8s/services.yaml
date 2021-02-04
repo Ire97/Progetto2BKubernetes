@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafkabroker
+  labels:
+    app: kafkabroker
+spec:
+  ports:
+    - port: 9092
+      name: plaintext
+    - port: 9999
+      name: jmx
+  selector:
+    app: kafkabroker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: zookeeper-service
+  name: zookeeper-service
+spec:
+  type: NodePort
+  ports:
+    - name: zookeeper-port
+      port: 2181
+      targetPort: 2181
+  selector:
+    app: zookeeper
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-service
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: orders-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-service-db
+spec:
+  ports:
+    - port: 27017
+  selector:
+    app: orders-service-db

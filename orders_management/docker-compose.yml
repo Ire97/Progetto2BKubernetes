@@ -3,7 +3,7 @@ version: '3.8'
 x-mongo-secrets: &mongo-credentials
   MONGO_USER: &mongo-user ireneSalvo
   MONGO_PASS: &mongo-pass irenesalvo
-  MONGO_AUTH_DB: admin
+  MONGO_INITDB_DATABASE: admin
   MONGO_HOST: mongo
   MONGO_PORT: 27017
   MONGO_DB_NAME: mymongodb
@@ -13,7 +13,11 @@ x-kafka-env: &kafka-env
   KAFKA_ADVERTISED_PORT: 9092
   BROKER_ID_COMMAND: "hostname | cut -d'-' -f2"
   KAFKA_ZOOKEEPER_CONNECT: "zoo:2181"
-  KAFKA_CREATE_TOPICS: "logging:20:1,pushnotifications:10:1,invoicing:10:1,mailing:10:1,userupdates:10:1,orderupdates:10:1"
+  KAFKA_TOPIC_LOGGING: logging
+  KAFKA_TOPIC_ORDERS: orders
+  KAFKA_TOPIC_NOTIFICATION: notification
+  KAFKA_TOPIC_INVOICING: invocing
+  #KAFKA_CREATE_TOPICS: "logging:20:1,pushnotifications:10:1,invoicing:10:1,mailing:10:1,userupdates:10:1,orderupdates:10:1"
   KAFKA_LISTENERS: "PLAINTEXT://:9092"
 
 services:
@@ -29,9 +33,7 @@ services:
       - mongo-db-data:/data/db
 
   orders_management:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ire97/orders_management:v7
     ports:
       - 8080:8080
     restart: always

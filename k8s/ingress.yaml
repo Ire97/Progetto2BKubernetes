@@ -11,10 +11,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: "/$2"
 spec:
   rules:
-    - host: esempio.kub.com
+    - host: clustera.dsbd2021.it
       http:
         paths:
-          - path: /orders(/|$)(.*)
+          - path: /order(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:

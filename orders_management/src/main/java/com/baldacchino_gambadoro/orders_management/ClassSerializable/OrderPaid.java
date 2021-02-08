@@ -1,29 +1,28 @@
 package com.baldacchino_gambadoro.orders_management.ClassSerializable;
 
-import org.bson.types.ObjectId;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
 //Classe utilizzata per deserializzare i dati ricevuti sul topic orderupdates relativo alla chiave order_paid
 public class OrderPaid  implements Serializable {
-    private ObjectId orderId;
+    private String orderId;
     private String userId;
-    private double amount;
+    private double amountPaid;
     private HashMap<String, String> extraArgs;
 
-    public OrderPaid(ObjectId orderId, String userId, double amount) {
+    public OrderPaid(String orderId, String userId, double amount) {
         this.orderId = orderId;
         this.userId = userId;
-        this.amount = amount;
+        this.amountPaid = amount;
         this.extraArgs = new HashMap<String, String>();
     }
 
-    public ObjectId getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public OrderPaid setOrderId(ObjectId orderId) {
+    public OrderPaid setOrderId(String orderId) {
         this.orderId = orderId;
         return this;
     }
@@ -38,11 +37,11 @@ public class OrderPaid  implements Serializable {
     }
 
     public double getAmount() {
-        return amount;
+        return amountPaid;
     }
 
     public OrderPaid setAmount(double amount) {
-        this.amount = amount;
+        this.amountPaid = amount;
         return this;
     }
 

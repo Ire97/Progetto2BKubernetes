@@ -6,8 +6,10 @@ import com.baldacchino_gambadoro.orders_management.DataModel.TotalOrder;
 import com.baldacchino_gambadoro.orders_management.Repository.TotalOrderRepository;
 import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -46,7 +48,7 @@ public class KafkaConsumer {
                 System.out.println(record.key());
                 System.out.println(record.value());
                 OrderPaid orderPaid = new Gson().fromJson(record.value(), OrderPaid.class);
-                TotalOrder order = repository.findTotalOrderBy_idAndUserIdAndAmount(orderPaid.getOrderId(),
+                TotalOrder order = repository.findTotalOrderBy_idAndUserIdAndAmount(new ObjectId(orderPaid.getOrderId()),
                         orderPaid.getUserId(), orderPaid.getAmount());
                 if(order != null){
                     order.setStatus("Paid");
@@ -54,7 +56,7 @@ public class KafkaConsumer {
                     kafkaTemplate.send(kafkaTopicNotification, "order_paid", new Gson().toJson(order));
                     kafkaTemplate.send(kafkaTopicInvoicing, "order_paid", new Gson().toJson(order));
                 }else{
-                    TotalOrder order_error = repository.findTotalOrderBy_idAndUserId(orderPaid.getOrderId(),
+                    TotalOrder order_error = repository.findTotalOrderBy_idAndUserId(new ObjectId(orderPaid.getOrderId()),
                             orderPaid.getUserId());
                     if(order_error != null){
                         //esiste un ordine ma c'è l'amount sbagliato.

@@ -40,7 +40,7 @@ public class KafkaConsumer {
                 OrderValidation orderValidation = new Gson().fromJson(record.value(), OrderValidation.class);
                 System.out.println(orderValidation);
                 if (orderValidation.getStatus() != 0) {
-                    TotalOrder order = repository.findBy_id(orderValidation.getOrderId());
+                    TotalOrder order = repository.findBy_id(new ObjectId(orderValidation.getOrderId()));
                     order.setStatus("Abort");
                     repository.save(order);
                 }
@@ -53,8 +53,8 @@ public class KafkaConsumer {
                 if(order != null){
                     order.setStatus("Paid");
                     repository.save(order);
-                    kafkaTemplate.send(kafkaTopicNotification, "order_paid", new Gson().toJson(order));
-                    kafkaTemplate.send(kafkaTopicInvoicing, "order_paid", new Gson().toJson(order));
+                    kafkaTemplate.send(kafkaTopicNotification, "order_paid", new Gson().toJson(orderPaid));
+                    kafkaTemplate.send(kafkaTopicInvoicing, "order_paid", new Gson().toJson(orderPaid));
                 }else{
                     TotalOrder order_error = repository.findTotalOrderBy_idAndUserId(new ObjectId(orderPaid.getOrderId()),
                             orderPaid.getUserId());

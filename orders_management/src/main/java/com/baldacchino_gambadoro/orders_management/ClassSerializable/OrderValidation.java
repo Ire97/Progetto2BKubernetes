@@ -11,10 +11,10 @@ public class OrderValidation implements Serializable {
 
     private LocalDateTime timestamp;
     private Integer status;
-    private ObjectId orderId;
+    private String orderId;
     private List<String> extraArgs;
 
-    public OrderValidation(LocalDateTime timestamp, Integer status, ObjectId orderId) {
+    public OrderValidation(LocalDateTime timestamp, Integer status, String orderId) {
         this.timestamp = timestamp;
         this.status = status;
         this.orderId = orderId;
@@ -38,11 +38,11 @@ public class OrderValidation implements Serializable {
         return this;
     }
 
-    public ObjectId getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public OrderValidation setOrderId(ObjectId orderId) {
+    public OrderValidation setOrderId(String orderId) {
         this.orderId = orderId;
         return this;
     }

@@ -5,11 +5,11 @@ Progetto aggiuntivo adattato all'utilizzo di Kubernetes per corso DSBD 2020/2021
 # Modifiche effettuate rispetto al progetto precedente
 
 Sono state apportate diverse modifiche rispetto al progetto precedente che riguardano:
-1) Sono state aggiunte diverse variabili dinamiche al fine di evitare un continuo push dell'immagine;
-2) E' stato aggiunto un nuovo file di configurazione di Kafka per quanto riguarda la creazione dei diversi topic;
-3) Sono state effettuate alcune modifiche riguardo le classi create per renderli adattabili agli altri microservizi;
-4) E' stato eliminato il microservizio fake_producer in quanto utilizzato in una fase di testing precedente per il funzionamento della generazione e consumazione dei messaggi su Kafka;
-5) E' stata abilitata l'autenticazione dell'utente riguardo mongoDB.
+1) Aggiunta di variabili dinamiche al fine di evitare un continuo push dell'immagine;
+2) Aggiunta di un nuovo file di configurazione di Kafka per quanto riguarda la creazione dei diversi topic;
+3) Aggiunta di alcune modifiche riguardo le classi create per renderli adattabili agli altri microservizi;
+4) Eliminazione del microservizio fake_producer in quanto utilizzato in una fase di testing precedente per il funzionamento della generazione e consumazione dei messaggi su Kafka;
+5) Abilitazione dell'autenticazione dell'utente riguardo mongoDB.
 
 Quindi, in conclusione, le modifiche effettuate riguardano soltanto una piccolissima parte del microservizio utili per l'adattamento.
 

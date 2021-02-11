@@ -30,7 +30,8 @@ Al fine di eseguire il singolo microservizio e verificarne il funzionamento, è 
   pwd: 'toor',
   roles: [{ role: 'readWrite', db:'admin'}]
   }).
-Successivamente il risulterà pronto al testing.
+  
+Successivamente il tutto risulterà pronto al testing.
   
 Se invece si vuole testare il microservizio mediante l'utilizzo di Kubernetes:
 1) Avviare minikube:
@@ -41,4 +42,5 @@ Se invece si vuole testare il microservizio mediante l'utilizzo di Kubernetes:
   kubectl apply -f k8s
 4) Creare l'host al fine di abilitare le richieste:
   echo "$(minikube ip) clustera.dsbd2021.it" | sudo tee -a /etc/hosts.
+  
 Successivamente il tutto risulterà pronto al testing.

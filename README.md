@@ -4,7 +4,7 @@ Progetto aggiuntivo adattato all'utilizzo di Kubernetes per corso DSBD 2020/2021
 
 # Autori
 
-1) Irene Baldacchino (100012344);
+1) Irene Baldacchino (1000012344);
 2) Salvatore Gambadoro (1000008650).
 
 # Modifiche effettuate rispetto al progetto precedente

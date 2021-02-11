@@ -2,12 +2,12 @@
 
 Progetto aggiuntivo adattato all'utilizzo di Kubernetes per corso DSBD 2020/2021
 
-# Autori
+## Autori
 
 1) Irene Baldacchino (1000012344);
 2) Salvatore Gambadoro (1000008650).
 
-# Modifiche effettuate rispetto al progetto precedente
+## Modifiche effettuate rispetto al progetto precedente
 
 Sono state apportate diverse modifiche rispetto al progetto precedente che riguardano:
 1) Aggiunta di variabili dinamiche al fine di evitare un continuo push dell'immagine;
@@ -18,7 +18,7 @@ Sono state apportate diverse modifiche rispetto al progetto precedente che rigua
 
 Quindi, in conclusione, le modifiche effettuate riguardano soltanto una piccolissima parte del microservizio utili per l'adattamento.
 
-# Avvio del microservizio
+## Avvio del microservizio
 
 Al fine di eseguire il singolo microservizio e verificarne il funzionamento, è necessario effettuare un flusso di comandi per abilitare l'autenticazione riguardo mongo:
 1) Avviare i container mediante il comando:

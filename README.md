@@ -32,3 +32,12 @@ Al fine di eseguire il singolo microservizio e verificarne il funzionamento, è 
   })
 Successivamente il risulterà pronto al testing.
   
+Se invece si vuole testare il microservizio mediante l'utilizzo di Kubernetes:
+1) Avviare minikube:
+  minikube start
+2) Abilitare l'ingress mediante il comando:
+  minikube addons enable ingress
+3) Creare i diversi pod/service/ingress/volumes mediante il comando:
+  kubectl apply -f k8s
+4) Creare l'host al fine di abilitare le richieste:
+  echo "$(minikube ip) clustera.dsbd2021.it" | sudo tee -a /etc/hosts

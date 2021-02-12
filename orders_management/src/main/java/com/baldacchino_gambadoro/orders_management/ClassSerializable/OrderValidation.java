@@ -6,25 +6,25 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-//Classe utilizzata per deserializzare i dati ricevuti sul topic orderupdates relativo alla chiave order_validation
+//Classe utilizzata per deserializzare i dati ricevuti sul topic order relativo alla chiave order_validation
 public class OrderValidation implements Serializable {
 
-    private LocalDateTime timestamp;
+    private long timestamp;
     private Integer status;
     private String orderId;
     private List<String> extraArgs;
 
-    public OrderValidation(LocalDateTime timestamp, Integer status, String orderId) {
+    public OrderValidation(long timestamp, Integer status, String orderId) {
         this.timestamp = timestamp;
         this.status = status;
         this.orderId = orderId;
     }
 
-    public LocalDateTime getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public OrderValidation setTimestamp(LocalDateTime timestamp) {
+    public OrderValidation setTimestamp(long timestamp) {
         this.timestamp = timestamp;
         return this;
     }

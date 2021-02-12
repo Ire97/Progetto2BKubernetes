@@ -29,7 +29,7 @@ services:
       - mongo-db-data-orders:/data/db
 
   orders_management:
-    image: ire97/orders_management:v10
+    image: ire97/orders_management:v11
     ports:
       - 8080:8080
     restart: always

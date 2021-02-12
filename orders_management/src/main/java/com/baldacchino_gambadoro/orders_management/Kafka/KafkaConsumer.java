@@ -54,7 +54,7 @@ public class KafkaConsumer {
                     repository.save(order);
                     kafkaTemplate.send(kafkaTopicNotification, "order_paid", new Gson().toJson(orderPaid));
                     kafkaTemplate.send(kafkaTopicInvoicing, "order_paid", new Gson().toJson(orderPaid));
-                    System.out.println("Viene inviato un messaggio sui topic notification e invocing con chiave order_paid");
+                    System.out.println("Viene inviato un messaggio sui topic notification e invoicing con chiave order_paid");
                 }else{
                     System.out.println("L'ordine ha dei parametri non corrispondenti.");
                     TotalOrder order_error = repository.findTotalOrderBy_idAndUserId(new ObjectId(orderPaid.getOrderId()),
